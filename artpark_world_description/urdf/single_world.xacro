@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<robot name="single_artpark_world" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<link name="world_one">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <mass value="5965.999999999999"/>
+    <inertia ixx="10736.927018" ixy="0.0" ixz="0.0" iyy="5446.812018" iyz="0.0" izz="5300.058333"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/artpark_world_stl.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+</link>
+
+</robot>

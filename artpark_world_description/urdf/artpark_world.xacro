@@ -1,0 +1,304 @@
+<?xml version="1.0" ?>
+<robot name="artpark_world" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find artpark_world_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find artpark_world_description)/urdf/artpark_world.trans" />
+<xacro:include filename="$(find artpark_world_description)/urdf/artpark_world.gazebo" />
+
+<!-- <link name="floor">
+  <pose>0 0 0 0 0 0</pose>
+  <inertial>
+    <origin rpy="0 0 0" xyz="0 0.0 0"/>
+    <mass value="1.999999999999"/>
+    <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <box>
+        <size>15 15 .1</size>
+      </box>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <box>
+        <size>15 15 1</size>
+      </box>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="wall_front_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.55 0.0 1.5473684210526315"/>
+    <mass value="5965.999999999999"/>
+    <inertia ixx="10736.927018" ixy="0.0" ixz="0.0" iyy="5446.812018" iyz="0.0" izz="5300.058333"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-1.55 0 1.6"/>
+    <geometry>
+      <box size=".1 3.2 3" />
+    </geometry>
+  </collision>
+</link>
+
+<link name="sink_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.3571004886525628e-07 3.2631598623211744e-07 -0.08441974691106835"/>
+    <mass value="24.788439309209977"/>
+    <inertia ixx="0.565846" ixy="-0.0" ixz="-0.0" iyy="0.840984" iyz="0.0" izz="1.318326"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.65379 1.135558 -1.1"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/sink_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.65379 1.135558 -1.1"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/sink_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="tap_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="7.653621825198798e-08 0.04521139251938 0.17075988373424877"/>
+    <mass value="3.356096896803199"/>
+    <inertia ixx="0.032763" ixy="0.0" ixz="0.0" iyy="0.027983" iyz="-0.005482" izz="0.005356"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.65379 1.428526 -1.1"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/tap_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.65379 1.428526 -1.1"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/tap_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="window_frame1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.014999999999999902 -0.5 0.0"/>
+    <mass value="43.23779999999999"/>
+    <inertia ixx="11.48396" ixy="0.0" ixz="0.0" iyy="6.331853" iyz="0.0" izz="5.158592"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="1.5 0.3 -1.8"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/window_frame1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <!-- <collision>
+    <origin rpy="0 0 0" xyz="1.5 0.3 -1.8"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/window_frame1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision> -->
+</link>
+
+<link name="window_frame2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.014999999999999902 0.5 0.0"/>
+    <mass value="43.23779999999999"/>
+    <inertia ixx="11.48396" ixy="0.0" ixz="0.0" iyy="6.331853" iyz="0.0" izz="5.158592"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="1.5 -0.3 -1.8"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/window_frame2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <!-- <collision>
+    <origin rpy="0 0 0" xyz="1.5 -0.3 -1.8"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/window_frame2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision> -->
+</link>
+
+<link name="wall_right_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.5 -0.050000000000000044 0.0"/>
+    <mass value="7064.999999999999"/>
+    <inertia ixx="5304.6375" ixy="0.0" ixz="0.0" iyy="10597.5" iyz="0.0" izz="5304.6375"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="1.5 -1.6 -1.6"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/wall_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="1.5 -.05 0"/>
+    <geometry>
+      <box size="3 .1 3" />
+    </geometry>
+  </collision>
+</link>
+
+<link name="wall_left_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.55 0.050000000000000044 0.0"/>
+    <mass value="7300.499999999999"/>
+    <inertia ixx="5481.45875" ixy="-0.0" ixz="0.0" iyy="11321.85875" iyz="-0.0" izz="5852.5675"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="1.5 1.6 -1.6"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/wall_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="1.55 0.05 0"/>
+    <geometry>
+      <box size="3.1 .1 3" />
+    </geometry>
+  </collision>
+</link>
+
+<link name="wall_back_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.050000000000000044 -1.7266233766233767 0.10389610389610393"/>
+    <mass value="6044.499999999999"/>
+    <inertia ixx="9360.935547" ixy="0.0" ixz="-0.0" iyy="4682.498663" iyz="-644.719481" izz="4688.51105"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-1.5 -1.6 -1.6"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/wall_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-1.5 -1.6 -1.6"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/wall_back_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="counter_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.1260939981350092 0.2669963391402612 0.0"/>
+    <mass value="74.75496729488177"/>
+    <inertia ixx="2.535231" ixy="-0.918544" ixz="0.0" iyy="9.089657" iyz="-0.0" izz="11.619904"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.9 1.5 -1.09"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/counter_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.9 1.5 -1.09"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/counter_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="door_1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.4500000000000002 -0.025000000000000133 0.0"/>
+    <mass value="706.4999999999999"/>
+    <inertia ixx="235.647187" ixy="-0.0" ixz="-0.0" iyy="283.18875" iyz="-0.0" izz="47.835938"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-1.6 -1.3 -1.1"/>
+    <geometry>
+      <mesh filename="package://artpark_world_description/meshes/door_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.45 -0.025 0"/>
+    <geometry>
+      <box size=".9 .05 2" />
+    </geometry>
+  </collision>
+</link>
+
+<!-- <joint name="floor_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="1.5 0 0"/>
+  <parent link="floor"/>
+  <child link="wall_front_1"/>
+</joint> -->
+
+<joint name="sink_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.24621 0.364442 0.01"/>
+  <parent link="counter_1"/>
+  <child link="sink_1"/>
+</joint>
+
+<joint name="tap_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.24621 0.071474 0.01"/>
+  <parent link="counter_1"/>
+  <child link="tap_1"/>
+</joint>
+
+<joint name="frame1_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 1.3 0.2"/>
+  <parent link="wall_left_1"/>
+  <child link="window_frame1_1"/>
+</joint>
+
+<joint name="frame2_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 1.9 0.2"/>
+  <parent link="wall_left_1"/>
+  <child link="window_frame2_1"/>
+</joint>
+
+<joint name="wall_joint1" type="fixed">
+  <origin rpy="0 0 0" xyz="-1.5 1.6 1.6"/>
+  <parent link="wall_front_1"/>
+  <child link="wall_right_1"/>
+</joint>
+
+<joint name="wall_joint2" type="fixed">
+  <origin rpy="0 0 0" xyz="-1.5 -1.6 1.6"/>
+  <parent link="wall_front_1"/>
+  <child link="wall_left_1"/>
+</joint>
+
+<joint name="wall_joint3" type="fixed">
+  <origin rpy="0 0 0" xyz="3.0 0.0 0.0"/>
+  <parent link="wall_right_1"/>
+  <child link="wall_back_1"/>
+</joint>
+
+<joint name="counter_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="2.4 0.1 -0.51"/>
+  <parent link="wall_left_1"/>
+  <child link="counter_1"/>
+</joint>
+
+<joint name="door_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.1 -0.3 -0.5"/>
+  <parent link="wall_back_1"/>
+  <child link="door_1_1"/>
+</joint>
+
+</robot>

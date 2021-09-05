@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<robot name="artpark_world" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<material name="silver">
+  <color rgba="${192/255} ${192/255} ${192/255} 1.0"/>
+</material>
+<material name="orange">
+  <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+</material>
+
+</robot>
