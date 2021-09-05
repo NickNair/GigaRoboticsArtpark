@@ -56,7 +56,7 @@ class BoundingBoxes:
         self.labels = []
         self.classes= []
         self.colors = np.random.randint(0, 255, size=(len(self.classes), 3), dtype='uint8')
-        self.net = cv.dnn.readNetFromDarknet('artpark_workspace/src/GigaRoboticsArtpark/apbot_perception/config/' + item + '.cfg', 'artpark_workspace/src/GigaRoboticsArtpark/apbot_perception/weights/' + item + '.weights')
+        self.net = cv.dnn.readNetFromDarknet('/artpark_workspace/src/GigaRoboticsArtpark_artpark/apbot_perception/config/' + item + '.cfg', '/artpark_workspace/src/GigaRoboticsArtpark_artpark/apbot_perception/weights/' + item + '.weights')
         self.layer_names = self.net.getLayerNames()
         self.layer_names = [self.layer_names[i[0] - 1] for i in self.net.getUnconnectedOutLayers()]
         
