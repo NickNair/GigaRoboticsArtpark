@@ -26,8 +26,8 @@ if __name__ == '__main__':
     spawn_pose = Pose()
 
     # Spawn the new model #
-    model_path_green = "artpark_workspace/src/GigaRoboticsArtpark/artpark2021_world/models/dustbins/Dustbin_Green_Cylinder"
-    model_path_yellow = "artpark_workspace/src/GigaRoboticsArtpark/artpark2021_world/models/dustbins/Dustbin_Black_Cylinder"
+    model_path_green = "/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark2021_world/models/dustbins/Dustbin_Green_Cylinder"
+    model_path_yellow = "/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark2021_world/models/dustbins/Dustbin_Black_Cylinder"
     model_xml_green = ''
     model_xml_yellow = ''
 
