@@ -1,0 +1,4 @@
+<launch>
+    <node name="detect_node" pkg="apbot_perception" type="name.py" />
+    <node name="pose_node" pkg="apbot_perception" type="fusion_python.py" />
+</launch>
