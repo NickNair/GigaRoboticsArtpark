@@ -201,7 +201,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/base_link.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/base_link.stl</uri>
             </mesh>
           </geometry>
           <surface>
@@ -251,7 +251,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/wall_back_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/wall_back_1.stl</uri>
             </mesh>
           </geometry>
           <surface>
@@ -326,7 +326,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/counter_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/counter_1.stl</uri>
             </mesh>
           </geometry>
           <surface>
@@ -351,7 +351,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/sink_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/sink_1.stl</uri>
             </mesh>
           </geometry>
           <surface>
@@ -376,7 +376,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/tap_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/tap_1.stl</uri>
             </mesh>
           </geometry>
           <surface>
@@ -401,7 +401,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/window_frame1_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/window_frame1_1.stl</uri>
             </mesh>
           </geometry>
           <surface>
@@ -426,7 +426,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/window_frame2_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/window_frame2_1.stl</uri>
             </mesh>
           </geometry>
           <surface>
@@ -451,7 +451,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/base_link.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/base_link.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -466,7 +466,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/wall_right_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/wall_right_1.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -481,7 +481,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/wall_back_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/wall_back_1.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -496,7 +496,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/door_1_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/door_1_1.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -511,7 +511,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/wall_left_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/wall_left_1.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -526,7 +526,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/counter_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/counter_1.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -541,7 +541,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/sink_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/sink_1.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -556,7 +556,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/tap_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/tap_1.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -571,7 +571,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/window_frame1_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/window_frame1_1.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -586,7 +586,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark_world_description/meshes/window_frame2_1.stl</uri>
+              <uri>/artpark_workspace/src/GigaRoboticsArtpark/artpark_world_description/meshes/window_frame2_1.stl</uri>
             </mesh>
           </geometry>
           <material>
