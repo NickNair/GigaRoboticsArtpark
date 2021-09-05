@@ -110,10 +110,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
- INCLUDE_DIRS include
- LIBRARIES apbot_image_processing
  CATKIN_DEPENDS roscpp rospy message_generation pcl_conversions pcl_ros roslib sensor_msgs tf tf2 tf2_ros
- DEPENDS system_lib
 )
 
 ###########
