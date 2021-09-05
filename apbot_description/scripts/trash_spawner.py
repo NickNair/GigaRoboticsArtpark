@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
         cans.remove(can)
 
-        can_model_path = "artpark_workspace/src/GigaRoboticsArtpark/artpark2021_world/models/cans/" + can
+        can_model_path = "/artpark_workspace/src/GigaRoboticsArtpark/artpark2021_world/models/cans/" + can
         model_xml = ''
 
         with open (can_model_path + '/model.sdf', 'r') as xml_file:
@@ -72,7 +72,7 @@ if __name__ == '__main__':
 
         cups.remove(cup)
 
-        cup_model_path = "artpark_workspace/src/GigaRoboticsArtpark/artpark2021_world/models/cups/" + cup
+        cup_model_path = "/artpark_workspace/src/GigaRoboticsArtpark/artpark2021_world/models/cups/" + cup
         model_xml = ''
 
         with open (cup_model_path + '/model.sdf', 'r') as xml_file:
