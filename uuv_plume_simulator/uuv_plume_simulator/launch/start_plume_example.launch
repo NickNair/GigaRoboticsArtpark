@@ -1,0 +1,14 @@
+<launch>
+  <arg name="use_gazebo" default="false"/>
+
+    <include file="$(find uuv_plume_simulator)/launch/start_current_velocity_server.launch">
+      <arg name="current_velocity_topic" value="/hydrodynamics/current_velocity"/>
+    </include>
+ 
+
+  <include file="$(find uuv_plume_simulator)/launch/start_plume_server.launch">
+    <arg name="current_velocity_topic" value="/hydrodynamics/current_velocity"/>
+  </include>
+
+
+</launch>
