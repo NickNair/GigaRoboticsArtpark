@@ -1,0 +1,3 @@
+<launch>
+    <node name="detect_table_top_node" pkg="apbot_perception" type="table_top.py" output="screen" launch-prefix="gnome-terminal --command"/>
+</launch>

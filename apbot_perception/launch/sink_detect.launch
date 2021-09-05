@@ -1,0 +1,3 @@
+<launch>
+    <node name="detect_sink_node" pkg="apbot_perception" type="sink_detection.py" output="screen" launch-prefix="gnome-terminal --command"/>
+</launch>
