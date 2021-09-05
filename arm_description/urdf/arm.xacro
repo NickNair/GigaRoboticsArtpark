@@ -1,0 +1,660 @@
+<?xml version="1.0" ?>
+<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- <xacro:include filename="$(find arm_description)/urdf/materials.xacro" /> -->
+<xacro:include filename="$(find arm_description)/urdf/arm.trans" />
+<xacro:include filename="$(find arm_description)/urdf/arm.gazebo" />
+
+<!-- Gripper -->
+<xacro:include filename="$(find apbot_gripper_description)/urdf/apbot_gripper.xacro" />
+
+<!-- Gripper Joint -->
+<joint name="gripper_joint" type="continuous">
+  <origin rpy="0 ${pi/2} ${pi}" xyz="0.005 -.06 -0.03519"/>
+  <parent link="mg995_wrist3_1"/>
+  <child link="gripper_base_link"/>
+  <axis xyz="0.0 -1.0 -0.0"/>
+</joint>
+
+<link name="arm_base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.3531172383676431e-09 -0.12029385392971133 -0.2912711053363403"/>
+    <mass value=".1"/>
+    <inertia ixx="0.013698" ixy="0.0" ixz="0.0" iyy="0.027025" iyz="0.0" izz="0.040653"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm_lead_screw_anti_backlash_nut__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-6.782150594611905e-06 -6.21710010306753e-07 -0.006421039581144594"/>
+    <mass value="0.020072194441107107"/>
+    <inertia ixx="2e-06" ixy="-0.0" ixz="-0.0" iyy="2e-06" iyz="-0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 0.05 0.286271"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/arm_lead_screw_anti_backlash_nut__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 0.05 0.286271"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/arm_lead_screw_anti_backlash_nut__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="2040_gantry_kit_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.00012438923353576462 0.010685760504749345 -1.062516762351251e-07"/>
+    <mass value="0.2"/>
+    <inertia ixx="0.000563" ixy="3e-06" ixz="-0.0" iyy="0.002009" iyz="0.0" izz="0.001586"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 0.0218 0.291271"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/2040_gantry_kit_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 0.0218 0.291271"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/2040_gantry_kit_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm_base_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.00013281487490748525 0.06642988393150248 0.019947781840941536"/>
+    <mass value=".1"/>
+    <inertia ixx="0.002307" ixy="0.0" ixz="-1.5e-05" iyy="0.002613" iyz="-3.5e-05" izz="0.004389"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-3e-06 0.2015 0.286271"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/arm_base_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-3e-06 0.2015 0.286271"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/arm_base_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rki-1203_pan_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.02440063415076226 0.004999625942491953 -0.006344729085382028"/>
+    <mass value="0.2"/>
+    <inertia ixx="3.3e-05" ixy="-0.0" ixz="0.0" iyy="5.7e-05" iyz="0.0" izz="3.9e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0145 0.138666 0.258271"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/rki-1203_pan_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0145 0.138666 0.258271"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/rki-1203_pan_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="base_cover_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-4.960693458989617e-07 -3.4454373704084773e-07 0.00888953386887012"/>
+    <mass value="0.1"/>
+    <inertia ixx="0.000609" ixy="-0.0" ixz="0.0" iyy="0.000795" iyz="0.0" izz="0.001255"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0 0.133666 0.240271"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/base_cover_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0 0.133666 0.240271"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/base_cover_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rki-1203_tilt1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.00634412767969612 0.02440078545285365 -0.0050000758225687"/>
+    <mass value="0.2"/>
+    <inertia ixx="3.9e-05" ixy="-0.0" ixz="0.0" iyy="3.3e-05" iyz="0.0" izz="5.7e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0243 0.158166 0.205771"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/rki-1203_tilt1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0243 0.158166 0.205771"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/rki-1203_tilt1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rki-1203_tilt2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.006345119818387965 0.02440078545285365 -0.0050001348501108045"/>
+    <mass value="0.2"/>
+    <inertia ixx="3.9e-05" ixy="0.0" ixz="0.0" iyy="3.3e-05" iyz="-0.0" izz="5.7e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0243 0.158166 0.205771"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/rki-1203_tilt2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0243 0.158166 0.205771"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/rki-1203_tilt2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="elbow_bracket_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.010807951266649986 -0.0050820886952618605 0.014317309296792341"/>
+    <mass value="0.03"/>
+    <inertia ixx="0.000113" ixy="-0.0" ixz="-5e-06" iyy="0.000103" iyz="0.0" izz="2.9e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0102 0.138586 -0.084979"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/elbow_bracket_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0102 0.138586 -0.084979"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/elbow_bracket_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.010000496069346132 -6.216426726990409e-07 0.14932850638558387"/>
+    <mass value="0.05"/>
+    <inertia ixx="0.001336" ixy="0.0" ixz="0.0" iyy="0.001336" iyz="0.0" izz="2.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0101 0.143666 0.210771"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0101 0.143666 0.210771"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/link1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="rki-1203_elbow_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.006345119818387854 0.004999625718975498 -0.024401235332929885"/>
+    <mass value="0.2"/>
+    <inertia ixx="3.9e-05" ixy="0.0" ixz="-0.0" iyy="5.7e-05" iyz="0.0" izz="3.3e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0098 0.148586 -0.133979"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/rki-1203_elbow_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0098 0.148586 -0.133979"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/rki-1203_elbow_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link2_1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.009999503930653852 -1.041063643125728e-06 0.14944278575480607"/>
+    <mass value="0.05"/>
+    <inertia ixx="0.001339" ixy="-0.0" ixz="-0.0" iyy="0.001339" iyz="0.0" izz="2.2e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.024 0.143586 -0.119479"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/link2_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.024 0.143586 -0.119479"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/link2_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wrist1_bracket_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.010841434585935339 0.004782557786550623 0.019507293820203775"/>
+    <mass value="0.03"/>
+    <inertia ixx="9.6e-05" ixy="0.0" ixz="5e-06" iyy="8.6e-05" iyz="0.0" izz="2.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0443 0.148326 -0.413353"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/wrist1_bracket_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0443 0.148326 -0.413353"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/wrist1_bracket_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mg995_wrist1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.005431922125121898 0.004999655239392886 -0.022135540653728025"/>
+    <mass value="0.055"/>
+    <inertia ixx="2.4e-05" ixy="0.0" ixz="0.0" iyy="4.3e-05" iyz="0.0" izz="2.7e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0243 0.148326 -0.463132"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/mg995_wrist1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0243 0.148326 -0.463132"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/mg995_wrist1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link3_1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.009987138265263738 -3.447672533574142e-07 0.034876616390597026"/>
+    <mass value="0.02"/>
+    <inertia ixx="1.9e-05" ixy="0.0" ixz="-0.0" iyy="1.9e-05" iyz="0.0" izz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0099 0.143326 -0.450743"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/link3_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0099 0.143326 -0.450743"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/link3_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wrist2_bracket_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.012772135083094186 -0.00864583177690087 -4.918118449159792e-07"/>
+    <mass value="0.03"/>
+    <inertia ixx="3.6e-05" ixy="-1e-06" ixz="-0.0" iyy="2.4e-05" iyz="-0.0" izz="5.9e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0014 0.133026 -0.508743"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/wrist2_bracket_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0014 0.133026 -0.508743"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/wrist2_bracket_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mg995_wrist2_1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.00500049605288928 0.02433534122864142 -0.005432910507889521"/>
+    <mass value="0.055"/>
+    <inertia ixx="4.3e-05" ixy="-0.0" ixz="0.0" iyy="2.7e-05" iyz="0.0" izz="2.4e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0251 0.166335 -0.513743"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/mg995_wrist2_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0251 0.166335 -0.513743"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/mg995_wrist2_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link4_1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-4.96069346857253e-07 -0.034784265560588695 0.009997661408342462"/>
+    <mass value="0.03"/>
+    <inertia ixx="1.9e-05" ixy="-0.0" ixz="-0.0" iyy="5e-06" iyz="-0.0" izz="1.9e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0201 0.151746 -0.528143"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/link4_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0201 0.151746 -0.528143"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/link4_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wrist3_bracket_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.010300496069344356 -0.006742537219063038 -0.011496720767835367"/>
+    <mass value="0.03"/>
+    <inertia ixx="0.000129" ixy="-0.0" ixz="0.0" iyy="0.000143" iyz="-7e-06" izz="2.8e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0304 0.216312 -0.533396"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/wrist3_bracket_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0304 0.216312 -0.533396"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/wrist3_bracket_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mg995_wrist3_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0049995039471053045 0.005432711518115335 -0.025443533764259674"/>
+    <mass value="0.055"/>
+    <inertia ixx="4.3e-05" ixy="-0.0" ixz="-0.0" iyy="2.4e-05" iyz="-0.0" izz="2.7e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0151 0.232046 -0.532939"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/mg995_wrist3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0151 0.232046 -0.532939"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/mg995_wrist3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="gripper_1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.002448373891675921 -0.04888547780978614 0.005724119151769624"/>
+    <mass value="0.08"/>
+    <inertia ixx="0.000119" ixy="-8e-06" ixz="-1e-06" iyy="6.2e-05" iyz="1e-06" izz="0.000179"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0201 0.249546 -0.497749"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/gripper_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0201 0.249546 -0.497749"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/gripper_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="d435_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0011639548429780606 -0.0020978679018932578 0.01243721951034027"/>
+    <mass value="0.15"/>
+    <inertia ixx="3.2e-05" ixy="-2e-06" ixz="-0.0" iyy="0.000214" iyz="0.0" izz="0.000216"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0201 0.186746 -0.588143"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/d435_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0201 0.186746 -0.588143"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/d435_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="nozzle_gripper">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0009875805313844088 -0.0014508386042405563 -0.004646201103054193"/>
+    <mass value="0.001831004123745"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.001 0.21 -0.2554"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/nozzle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.001 0.21 -0.2554"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/nozzle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="nozzle_gripper_joint" type="fixed">
+  <origin rpy="3.14 0 2.9" xyz="0.02 -0.002 0.006"/>
+  <parent link="gripper_base_link"/>
+  <child link="nozzle_gripper"/>
+</joint>
+
+<joint name="arm_nut_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.05 -0.286271"/>
+  <parent link="arm_base_link"/>
+  <child link="arm_lead_screw_anti_backlash_nut__1"/>
+</joint>
+
+<joint name="arm_gantry_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.0218 -0.291271"/>
+  <parent link="arm_base_link"/>
+  <child link="2040_gantry_kit_1"/>
+</joint>
+
+<joint name="arm_base_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="3e-06 -0.2015 -0.286271"/>
+  <parent link="arm_base_link"/>
+  <child link="arm_base_1"/>
+</joint>
+
+<joint name="servo_pan_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.014503 0.062834 0.028"/>
+  <parent link="arm_base_1"/>
+  <child link="rki-1203_pan_1"/>
+</joint>
+
+<joint name="shoulder_pan_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0145 0.005 0.018"/>
+  <parent link="rki-1203_pan_1"/>
+  <child link="base_cover_1"/>
+  <axis xyz="-0.0 -0.0 -1.0"/>
+</joint>
+
+<joint name="servo_tilt_1_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0243 -0.0245 0.0345"/>
+  <parent link="base_cover_1"/>
+  <child link="rki-1203_tilt1_1"/>
+</joint>
+
+<joint name="servo_tilt_2_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0243 -0.0245 0.0345"/>
+  <parent link="base_cover_1"/>
+  <child link="rki-1203_tilt2_1"/>
+</joint>
+
+<joint name="elbow_bracket" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0203 0.00508 0.29575"/>
+  <parent link="link1_1"/>
+  <child link="elbow_bracket_1"/>
+</joint>
+
+<joint name="shoulder_tilt_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.0142 0.0145 -0.005"/>
+  <parent link="rki-1203_tilt1_1"/>
+  <child link="link1_1"/>
+  <axis xyz="1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="servo_elbow_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.02 -0.01 0.049"/>
+  <parent link="elbow_bracket_1"/>
+  <child link="rki-1203_elbow_1"/>
+</joint>
+
+<joint name="elbow_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0142 0.005 -0.0145"/>
+  <parent link="rki-1203_elbow_1"/>
+  <child link="link2_1_1"/>
+  <axis xyz="-1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="wrist1_bracket" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0203 -0.00474 0.293874"/>
+  <parent link="link2_1_1"/>
+  <child link="wrist1_bracket_1"/>
+</joint>
+
+<joint name="servo_wrist1" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.02 0.0 0.049779"/>
+  <parent link="wrist1_bracket_1"/>
+  <child link="mg995_wrist1_1"/>
+</joint>
+
+<joint name="wrist1_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.0144 0.005 -0.012389"/>
+  <parent link="mg995_wrist1_1"/>
+  <child link="link3_1_1"/>
+  <axis xyz="-1.0 -0.0 -0.0"/>
+</joint>
+
+<joint name="wrist2_bracket" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0085 0.0103 0.058"/>
+  <parent link="link3_1_1"/>
+  <child link="wrist2_bracket_1"/>
+</joint>
+
+<joint name="servo_wrist2" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0237 -0.033309 0.005"/>
+  <parent link="wrist2_bracket_1"/>
+  <child link="mg995_wrist2_1_1"/>
+</joint>
+
+<joint name="wrist2_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.005 0.014589 0.0144"/>
+  <parent link="mg995_wrist2_1_1"/>
+  <child link="link4_1_1"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="wrist3_bracket" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0103 -0.064566 0.005253"/>
+  <parent link="link4_1_1"/>
+  <child link="wrist3_bracket_1"/>
+</joint>
+
+<joint name="servo_wrist3" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.0153 -0.015734 -0.000457"/>
+  <parent link="wrist3_bracket_1"/>
+  <child link="mg995_wrist3_1"/>
+</joint>
+
+<!-- <joint name="gripper_joint" type="continuous">
+  <origin rpy="0 0 0" xyz="0.005 -0.0175 -0.03519"/>
+  <parent link="mg995_wrist3_1"/>
+  <child link="gripper_1_1"/>
+  <axis xyz="0.0 -1.0 -0.0"/>
+</joint> -->
+
+<joint name="d435" type="fixed">
+  <origin rpy="${pi} ${pi/2} 0" xyz="-0.03 -0.02 0"/>
+  <parent link="gripper_base_link"/>
+  <child link="d435_1"/>
+</joint>
+
+<!-- Camera joint and tf fix -->
+
+<joint name="camera_rgb_joint" type="fixed">
+  <origin xyz="0 0 0" rpy="0 0 ${-pi/2}"/>
+  <parent link="d435_1"/>
+  <child link="camera_rgb_frame"/>
+</joint>
+
+<link name="camera_rgb_frame">
+</link>
+
+<joint name="camera_depth_joint" type="fixed">
+  <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+  <parent link="camera_rgb_frame"/>
+  <child link="camera_depth_frame"/>
+</joint>
+
+<link name="camera_depth_frame">
+</link>
+
+</robot>

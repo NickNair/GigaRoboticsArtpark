@@ -1,0 +1,270 @@
+<?xml version="1.0" ?>
+<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="arm_base_link_color" value="Gazebo/Red" />
+<xacro:property name="arm_nut_color" value="Gazebo/Yellow" />
+<xacro:property name="arm_gantry_color" value="Gazebo/Grey" />
+<xacro:property name="arm_base_color" value="Gazebo/Black" />
+<xacro:property name="arm_rki_color" value="Gazebo/Blue" />
+<xacro:property name="arm_mg995_color" value="Gazebo/Red" />
+<xacro:property name="arm_bracket_color" value="Gazebo/Silver" />
+<xacro:property name="arm_link_color" value="Gazebo/Black" />
+<xacro:property name="arm_gripper_color" value="Gazebo/Grey" />
+<xacro:property name="arm_d435_color" value="Gazebo/White" />
+
+<!-- Plugins -->
+<!-- <gazebo>
+  <plugin filename="libgazebo_ros_control.so" name="control"/>
+</gazebo> -->
+
+<!-- <gazebo reference = "gripper_base_link">
+  <light type="spot" name="cylinder/light_source1" cast_shadows="false">
+      <pose frame=''>0 0 0 1.57 0 0</pose>
+      <attenuation>
+          <range>30</range>
+          <linear>0.05</linear>
+      </attenuation>
+      <diffuse>0 1 0 1</diffuse>
+      <specular>0 1 0 1</specular>
+      <spot>
+          <inner_angle>0.1</inner_angle>
+          <outer_angle>0.15</outer_angle>
+          <falloff>1</falloff>
+      </spot>
+      <direction>0 0 -1</direction>
+  </light>
+  <plugin name='light_control' filename='libLedPlugin.so'>
+      <enable>true</enable>
+      <light>
+          <id>cylinder/light_source1</id>
+          <duration>0.5</duration>
+          <interval>0</interval>
+          <color>.5 1 .5</color>
+      </light>
+  </plugin>
+</gazebo> -->
+
+<!-- intel realsense1 -->
+<gazebo reference="camera_rgb_frame">
+  <sensor type="depth" name="intelrealsenseD435i">
+    <always_on>1</always_on>
+    <visualize>1</visualize>
+    <camera>
+      <horizontal_fov>1.047</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <depth_camera>
+
+      </depth_camera>
+      <clip>
+        <near>0.1</near>
+        <far>100</far>
+      </clip>
+    </camera>
+    <plugin name="intelrealsense" filename="libgazebo_ros_openni_kinect.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>10.0</updateRate>
+      <cameraName>camera</cameraName>
+      <frameName>camera_depth_frame</frameName>
+      <imageTopicName>/camera/color/image_raw</imageTopicName>
+      <depthImageTopicName>/camera/depth/image_rect_raw</depthImageTopicName>
+      <pointCloudTopicName>depth/points</pointCloudTopicName>
+      <cameraInfoTopicName>/camera/color/camera_info</cameraInfoTopicName>
+      <depthImageCameraInfoTopicName>/camera/depth/camera_info</depthImageCameraInfoTopicName>
+      <pointCloudCutoff>0.2</pointCloudCutoff>
+      <pointCloudCutoffMax>10.0</pointCloudCutoffMax>
+      <hackBaseline>0.07</hackBaseline>
+      <distortionK1>0.0</distortionK1>
+      <distortionK2>0.0</distortionK2>
+      <distortionK3>0.0</distortionK3>
+      <distortionT1>0.0</distortionT1>
+      <distortionT2>0.0</distortionT2>
+      <CxPrime>0.0</CxPrime>
+      <Cx>0.0</Cx>
+      <Cy>0.0</Cy>
+      <focalLength>0.0</focalLength>
+    </plugin>
+  </sensor>
+  <!-- <sensor name="intelrealsenseD435i_color" type="camera">
+        <camera name="intelrealsense">
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>RGB_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>1</visualize>
+  </sensor> -->
+</gazebo>
+
+<gazebo reference="arm_base_link">
+  <material>${arm_base_link_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="arm_lead_screw_anti_backlash_nut__1">
+  <material>${arm_nut_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="2040_gantry_kit_1">
+  <material>${arm_gantry_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="arm_base_1">
+  <material>${arm_base_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="rki-1203_pan_1">
+  <material>${arm_rki_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="base_cover_1">
+  <material>${arm_base_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="rki-1203_tilt1_1">
+  <material>${arm_rki_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="rki-1203_tilt2_1">
+  <material>${arm_rki_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="elbow_bracket_1">
+  <material>${arm_bracket_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="link1_1">
+  <material>${arm_link_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="rki-1203_elbow_1">
+  <material>${arm_rki_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="link2_1_1">
+  <material>${arm_link_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="wrist1_bracket_1">
+  <material>${arm_bracket_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="mg995_wrist1_1">
+  <material>${arm_mg995_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="link3_1_1">
+  <material>${arm_link_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="wrist2_bracket_1">
+  <material>${arm_bracket_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="mg995_wrist2_1_1">
+  <material>${arm_mg995_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="link4_1_1">
+  <material>${arm_link_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="wrist3_bracket_1">
+  <material>${arm_bracket_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="mg995_wrist3_1">
+  <material>${arm_mg995_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="gripper_1_1">
+  <material>${arm_gripper_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="d435_1">
+  <material>${arm_d435_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+</robot>
