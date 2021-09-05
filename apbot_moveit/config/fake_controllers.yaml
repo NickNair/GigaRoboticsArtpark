@@ -1,0 +1,23 @@
+controller_list:
+  - name: fake_arm_controller
+    joints:
+      - apbot_joint
+      - shoulder_pan_joint
+      - shoulder_tilt_joint
+      - elbow_joint
+      - wrist1_joint
+      - wrist2_joint
+      - gripper_joint
+  - name: fake_gripper_controller
+    joints:
+      - knuckle_joint_left
+  - name: fake_mop_controller
+    joints:
+      - mop_tray_joint
+initial:  # Define initial robot poses.
+  - group: arm
+    pose: voxelPose
+  - group: gripper
+    pose: open_full
+  - group: mop
+    pose: mop_up

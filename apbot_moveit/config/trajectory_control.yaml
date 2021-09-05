@@ -1,0 +1,68 @@
+arm_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - apbot_joint
+     - shoulder_pan_joint
+     - shoulder_tilt_joint
+     - elbow_joint
+     - wrist1_joint
+     - wrist2_joint
+     - gripper_joint 
+  stop_trajectory_duration: .5
+  state_publish_rate:  200
+  action_monitor_rate: 20
+  constraints/goal_time: 1
+  constraints/stopped_velocity_tolerance: .3
+  constraints/elbow_joint/goal: 0.0
+  constraints/elbow_joint/trajectory: 0.0
+  velocity_ff:
+     - apbot_joint
+     - shoulder_pan_joint
+     - shoulder_tilt_joint
+     - elbow_joint
+     - wrist1_joint
+     - wrist2_joint
+     - gripper_joint
+  allow_partial_joints_goal: False 
+  gains:
+      apbot_joint: {p: 100,  d: 1, i: 1, i_clamp: 10}
+      shoulder_pan_joint: {p: 100,  d: 1, i: 1, i_clamp: 10}
+      shoulder_tilt_joint: {p: 100,  d: 1, i: 1, i_clamp: 10}
+      elbow_joint: {p: 100, d: 1, i: 1, i_clamp: 10}
+      wrist_1_joint: {p: 100,  d: 1, i: 1, i_clamp: 10}
+      wrist_2_joint: {p: 100,  d: 1, i: 1, i_clamp: 10}
+      gripper_joint: {p: 100,  d: 1, i: 1, i_clamp: 10}
+
+gripper_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - knuckle_joint_left
+  stop_trajectory_duration: .5
+  state_publish_rate:  200
+  action_monitor_rate: 20
+  constraints/goal_time: 1
+  constraints/stopped_velocity_tolerance: .3
+  constraints/elbow_joint/goal: 0.0
+  constraints/elbow_joint/trajectory: 0.0
+  velocity_ff:
+     - knuckle_joint_left
+  allow_partial_joints_goal: False 
+  gains:
+      knuckle_joint_left: {p: 100,  d: 1, i: 1, i_clamp: 10}
+
+mop_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - mop_tray_joint
+  stop_trajectory_duration: .5
+  state_publish_rate:  200
+  action_monitor_rate: 20
+  constraints/goal_time: 1
+  constraints/stopped_velocity_tolerance: .3
+  constraints/elbow_joint/goal: 0.0
+  constraints/elbow_joint/trajectory: 0.0
+  velocity_ff:
+     - mop_tray_joint
+  allow_partial_joints_goal: False 
+  gains:
+      mop_tray_joint: {p: 100,  d: 1, i: 1, i_clamp: 10}
