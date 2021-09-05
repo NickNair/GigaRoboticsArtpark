@@ -1,0 +1,27 @@
+<?xml version ="1.0"?>
+<sdf version="1.6">
+  <model name="self_world">
+    <pose>0 0 0  0 0 0</pose>
+    <static>true</static>
+    <link name="link">
+      <collision name="colision3">
+        <geometry>
+          <mesh>
+            <uri>model://self_world/meshes/world.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual3">
+        <cast_shadows>true</cast_shadows>
+        <geometry>
+          <mesh>
+            <uri>model://self_world/meshes/world.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </visual>
+
+    </link>
+  </model>
+</sdf>
