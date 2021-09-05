@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <light type="directional" name="my_light" cast_shadows="false">
+      <origin pose="0 0 10 0 0 0"/>
+      <diffuse rgba=".9 .9 .9 1"/>
+      <specular rgba=".1 .1 .1 1"/>
+      <attenuation range="20"/>
+      <direction xyz="0 0 -1"/>
+    </light>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://fresca_can</uri>
+      <pose>0 0 0 1.57 0 0</pose>
+    </include>
+  </world>
+</sdf>
