@@ -100,7 +100,7 @@ def start_yolo():
     global labels,colors,net,layer_names
     labels = []
     colors = np.random.randint(0, 255, size=(len(labels), 3), dtype='uint8')
-    net = cv.dnn.readNetFromDarknet('artpark_workspace/src/GigaRoboticsArtpark/apbot_perception/config/trash.cfg', 'artpark_workspace/src/GigaRoboticsArtpark/apbot_perception/weights/trash.weights')
+    net = cv.dnn.readNetFromDarknet('/artpark_workspace/src/GigaRoboticsArtpark/apbot_perception/config/trash.cfg', '/artpark_workspace/src/GigaRoboticsArtpark/apbot_perception/weights/trash.weights')
     layer_names = net.getLayerNames()
     layer_names = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
     print("Loaded weights")
