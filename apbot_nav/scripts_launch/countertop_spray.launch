@@ -1,0 +1,3 @@
+<launch>
+    <node name="wall_align" pkg="apbot_nav" type="countertop_spray.py" />
+</launch>

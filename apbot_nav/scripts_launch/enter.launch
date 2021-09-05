@@ -1,0 +1,3 @@
+<launch>
+    <node name="enter_bathroom_node" pkg="apbot_nav" type="enter.py" />
+</launch>

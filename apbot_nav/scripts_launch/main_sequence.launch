@@ -1,0 +1,3 @@
+<launch>
+    <node name="main_sequence_node" pkg="apbot_nav" type="apbot_sequence.py" output="screen" />
+</launch>

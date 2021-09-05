@@ -1,0 +1,36 @@
+<launch>
+
+    
+    <!-- <include file="$(find ebot_description)/launch/task2.launch" /> -->
+    <!-- <include file="$(find apbot_nav)/launch/amcl.launch" /> -->
+    <!-- <include file="$(find ebot_description)/launch/ebot_visualize.launch"/> -->
+    
+
+   
+
+      <!-- Move base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find apbot_nav)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find apbot_nav)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find apbot_nav)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find apbot_nav)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find apbot_nav)/config/trajectory_planner.yaml" command="load" />
+
+
+    <param name="move_base/DWAPlannerROS/yaw_goal_tolerance" value=".05"/>
+    <param name="move_base/DWAPlannerROS/xy_goal_tolerance" value=".1"/>
+    
+    <!-- <param name="max_planning_retries" value="10"/> -->
+    <!-- <param name="recovery_behavior_enabled" value="True"/> -->
+    <!-- <param name="shutdown_costmaps" value="True"/>
+    <param name="conservative_reset_dist" value="1"/> -->
+    <!-- <param name="controller_frequency" value="20"/> -->
+    <!-- <param name="controller_patience" value="1"/>
+    <param name="planner_patience" value="1"/>
+    <param name="planner_frequency" value="5"/> -->
+    <!-- <param name="oscillation_timeout " value="5"/>
+    <param name="oscillation_distance" value=".5"/> -->
+
+  </node>
+
+</launch>

@@ -1,0 +1,37 @@
+<launch>
+<node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid pcl_manager" output="screen">
+    <remap from="~input" to="/plume/particles" />
+    <remap from="~output" to="/plume/particles/z" />
+    <rosparam>
+        filter_field_name: z
+        filter_limit_min: 0.01
+        filter_limit_max: 1.5
+        filter_limit_negative: False
+        leaf_size: 0.01
+    </rosparam>
+</node>
+
+<node pkg="nodelet" type="nodelet" name="voxel_grid2" args="load pcl/VoxelGrid pcl_manager" output="screen">
+    <remap from="~input" to="/plume/particles/z" />
+    <remap from="~output" to="/plume/particles/x" />
+    <rosparam>
+        filter_field_name: x
+        filter_limit_min: 0.01
+        filter_limit_max: 1.5
+        filter_limit_negative: False
+        leaf_size: 0.01
+    </rosparam>
+</node>
+
+<node pkg="nodelet" type="nodelet" name="voxel_grid3" args="load pcl/VoxelGrid pcl_manager" output="screen">
+    <remap from="~input" to="/plume/particles" />
+    <remap from="~output" to="/plume/particles/final" />
+    <rosparam>
+        filter_field_name: y
+        filter_limit_min: 0.01
+        filter_limit_max: 1.5
+        filter_limit_negative: False
+        leaf_size: 0.01
+    </rosparam>
+</node>
+</launch>

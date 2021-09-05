@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+
+    <arg name="laser_topic" default="/scan" />
+
+    <!-- Extra XML code to launch move_base -->
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <rosparam file="$(find apbot_nav)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find apbot_nav)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find apbot_nav)/config/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find apbot_nav)/config/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find apbot_nav)/config/teb_local_planner_params.yaml" command="load" />
+        <!-- <rosparam file="$(find apbot_nav)/config/teb2.yaml" command="load" /> -->
+        <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+        <param name="controller_frequency" value="4.0" />
+
+        <remap from="scan" to="$(arg laser_topic)" />
+
+    </node>
+
+    <!-- Rviz-->
+
+    
+
+</launch>
