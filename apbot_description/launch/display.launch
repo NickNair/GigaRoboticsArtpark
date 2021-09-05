@@ -1,0 +1,15 @@
+<launch>
+  <arg default="$(find apbot_description)/urdf/apbot.xacro" name="model"/>
+  <arg default="$(find artpark_world_description)/urdf/single_world.xacro" name="world_model"/>
+  <param command="$(find xacro)/xacro $(arg world_model)" name="world_description"/>
+  <arg default="true" name="gui"/>
+  <!-- Rviz Teb -->
+  <!-- <arg default="$(find artpark_world_description)/launch/urdf.rviz" name="rvizconfig"/> -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_world" args="0.0 0.0 -.05 0 0 0  /map /world_one"/>
+  <arg default="$(find apbot_nav)/config/move_base.rviz" name="rvizconfig"/>
+  <param command="$(find xacro)/xacro $(arg model)" name="robot_description"/>
+  <param name="use_gui" value="$(arg gui)"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/> -->
+  <node args="-d $(arg rvizconfig)" name="rviz" pkg="rviz" required="true" type="rviz"/>
+</launch>

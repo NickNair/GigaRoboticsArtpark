@@ -1,0 +1,25 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="world_name" default="$(find artpark2021_world)/worlds/self_designed.world" />
+
+  <!-- URDF -->
+  <param command="$(find xacro)/xacro $(find apbot_description)/urdf/apbot.xacro" name="robot_description"/>
+  <!-- <node args="-param robot_description -urdf -x -1 -y -2.5 -z .08 -Y -.5 -model apbot" name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"/> -->
+
+  <!-- <param command="$(find xacro)/xacro $(find artpark_world_description)/urdf/artpark_world.xacro" name="world_description"/> -->
+  <!-- <node args="-param world_description -urdf -x 0 -y 0 -z 0 -model artpark_world" name="spawn_world_urdf" pkg="gazebo_ros" type="spawn_model"/> -->
+
+  <!-- Arm's controllers  -->
+  <!-- <include file="$(find arm_description)/launch/controller.launch" /> -->
+
+  <!-- World Launch -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_name)" />
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+</launch>

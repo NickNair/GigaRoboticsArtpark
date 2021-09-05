@@ -1,0 +1,32 @@
+<launch>
+
+  <arg name="x" default = "2.5" />
+  <arg name="y" default = "-0.8" />
+  <arg name="yaw" default = "-3.14" />
+  
+  <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/> -->
+  <include file="$(find apbot_description)/launch/display.launch" />
+  
+  <!-- Robot state publisher -->
+  <node name="robot_state_publisher" output="screen" pkg="robot_state_publisher" respawn="false" type="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="50.0" />
+    <param name="tf_prefix" type="string" value="" />
+  </node>
+  <arg name="planner" default="teb" />
+
+  <!-- URDF -->
+  <!-- <param command="$(find xacro)/xacro $(find apbot_description)/urdf/apbot.xacro" name="robot_description"/> -->
+  <node args="-param robot_description -urdf -x $(arg x) -y $(arg y) -z .08 -Y $(arg yaw) -model apbot" name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"/>
+  
+  <!-- Nav Stack -->
+  <!-- <include file="$(find apbot_nav)/launch/map_server.launch" /> -->
+  <!-- <include file="$(find apbot_nav)/launch/amcl.launch" /> -->
+  <include file="$(find apbot_nav)/launch/move_base_$(arg planner).launch" />
+  <!-- <node pkg="slam_toolbox" type="localization_slam_toolbox_node" name="slam_toolbox" output="screen">
+    <rosparam command="load" file="$(find slam_toolbox)/config/mapper_params_localization.yaml" />
+  </node> -->
+  <include file="$(find apbot_nav)/launch/gmapping.launch" />
+
+  <!-- Moveit -->
+  <include file="$(find apbot_moveit)/launch/bringup.launch" />
+</launch>

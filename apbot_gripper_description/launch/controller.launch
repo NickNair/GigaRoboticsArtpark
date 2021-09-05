@@ -1,0 +1,9 @@
+<launch>
+
+<rosparam file="$(find apbot_gripper_description)/launch/controller.yaml" command="load"/>
+<node args="knuckle_joint_left_position_controller knuckle_joint_right_position_controller finger_joint_left_position_controller knuckle_joint_right_position_controller joint_state_controller " name="controller_spawner" ns="apbot_gripper" output="screen" pkg="controller_manager" respawn="false" type="spawner"/>
+<node name="robot_state_publisher" output="screen" pkg="robot_state_publisher" respawn="false" type="robot_state_publisher">
+  <remap from="/joint_states" to="/apbot_gripper/joint_states"/>
+</node>
+
+</launch>

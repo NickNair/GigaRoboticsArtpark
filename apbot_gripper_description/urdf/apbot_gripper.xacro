@@ -1,0 +1,235 @@
+<?xml version="1.0" ?>
+<robot name="apbot_gripper" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- <xacro:include filename="$(find apbot_gripper_description)/urdf/materials.xacro" /> -->
+<xacro:include filename="$(find apbot_gripper_description)/urdf/apbot_gripper.trans" />
+<xacro:include filename="$(find apbot_gripper_description)/urdf/apbot_gripper.gazebo" />
+<link name="gripper_base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="9.160319814008974e-17 -0.02423998231836639 0.005932572791127643"/>
+    <mass value="0.1285784757973692"/>
+    <inertia ixx="5.8e-05" ixy="0.0" ixz="-0.0" iyy="4.4e-05" iyz="0.0" izz="3.6e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 -0.006"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 -0.006"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="finger_left_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0048999999999999695 0.020258383272484165 -0.011397319304167926"/>
+    <mass value="0.0394974646315258"/>
+    <inertia ixx="1.1e-05" ixy="-0.0" ixz="0.0" iyy="3e-06" iyz="2e-06" izz="1.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0049 -0.025497 -0.027454"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/finger_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0049 -0.025497 -0.027454"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/finger_left_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="connector_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0013715999999999572 -0.017732984796724582 -0.0003072967051843817"/>
+    <mass value="0.005917148708915528"/>
+    <inertia ixx="1e-06" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0081 -0.032164 -0.020614"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/connector_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0081 -0.032164 -0.020614"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/connector_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="connector_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.001371600000000004 -0.014808559829766978 0.0038472778794746004"/>
+    <mass value="0.005917148708915528"/>
+    <inertia ixx="1e-06" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0081 -0.029248 -0.016492"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/connector_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0081 -0.029248 -0.016492"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/connector_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="finger_right_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.004899999999999931 -0.005069171500498647 0.03909754484365974"/>
+    <mass value="0.039497464631525814"/>
+    <inertia ixx="1.1e-05" ixy="-0.0" ixz="-0.0" iyy="3e-06" iyz="-2e-06" izz="1.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0049 -0.025031 0.015024"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/finger_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0049 -0.025031 0.015024"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/finger_right_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- <link name="connector_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.001371599999999959 -0.01754145465220587 -0.011799197387159876"/>
+    <mass value="0.005917148708915528"/>
+    <inertia ixx="1e-06" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0081 -0.032014 -0.003478"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/connector_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0081 -0.032014 -0.003478"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/connector_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="connector_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0013715999999999902 -0.017532921710356066 -0.011831743854515523"/>
+    <mass value="0.005917148708915528"/>
+    <inertia ixx="1e-06" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.0081 -0.032014 -0.003478"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/connector_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.0081 -0.032014 -0.003478"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/connector_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
+
+<link name="big_link_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.004900000000000005 0.009770588926960123 -0.0020821150166260016"/>
+    <mass value="0.019757748002224147"/>
+    <inertia ixx="5e-06" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="0.0" izz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0049 0.006625 -0.032906"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/big_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0049 0.006625 -0.032906"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/big_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="big_link_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.004900000000000005 0.009770588926960123 -0.0020821150166260016"/>
+    <mass value="0.019757748002224147"/>
+    <inertia ixx="5e-06" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0049 0.0064 0.02"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/big_link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0049 0.0064 0.02"/>
+    <geometry>
+      <mesh filename="package://apbot_gripper_description/meshes/big_link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="finger_joint_left" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.032122 -0.005452"/>
+  <parent link="big_link_1"/>
+  <child link="finger_left_1"/>
+  <axis xyz="-1.0 0.0 -0.0"/>
+  <limit lower="0.0" upper="2" velocity="2.0" effort="1000"/>
+  <minDepth>0.001</minDepth>
+  <mimic joint="knuckle_joint_left" multiplier="1" offset="0"/>
+</joint>
+
+<joint name="finger_joint_right" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.0098 0.0317 0.004976"/>
+  <parent link="big_link_2"/>
+  <child link="finger_right_1"/>
+  <axis xyz="-1.0 0.0 -0.0"/>
+  <limit lower="-2" upper="0" velocity="2.0" effort="1000"/>
+  <minDepth>0.001</minDepth>
+  <mimic joint="knuckle_joint_left" multiplier="-1" offset="0"/>
+</joint>
+
+<joint name="knuckle_joint_left" type="continuous">
+  <origin rpy=".01 0 0" xyz="0.0049 -0.0064 0.026906"/>
+  <parent link="gripper_base_link"/>
+  <child link="big_link_1"/>
+  <axis xyz="1.0 -0.0 0.0"/>
+  <limit lower="0.0" upper="2" velocity="2.0" effort="1000"/>
+  <minDepth>0.001</minDepth>
+</joint>
+
+<joint name="knuckle_joint_right" type="continuous">
+  <origin rpy="-.01 0 0" xyz="0.0049 -0.0064 -0.026"/>
+  <parent link="gripper_base_link"/>
+  <child link="big_link_2"/>
+  <axis xyz="1.0 -0.0 0.0"/>
+  <limit lower="-2" upper="0" velocity="2.0" effort="1000"/>
+  <minDepth>0.001</minDepth>
+  <mimic joint="knuckle_joint_left" multiplier="-1" offset="0"/>
+</joint>
+
+</robot>

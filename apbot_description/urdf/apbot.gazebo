@@ -1,0 +1,156 @@
+<?xml version="1.0" ?>
+<robot name="apbot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="base_color" value="Gazebo/DarkGrey" />
+<xacro:property name="wheel_color" value="Gazebo/Grey" />
+<xacro:property name="lidar_color" value="Gazebo/Blue" />
+<xacro:property name="nozzle_color" value="Gazebo/Red" />
+<xacro:property name="arm_vslot_color" value="Gazebo/Yellow" />
+<xacro:property name="back_cover_color" value="Gazebo/Red" />
+<xacro:property name="trash_tray_color" value="Gazebo/Yellow" />
+<xacro:property name="sponge_tray_color" value="Gazebo/Green" />
+
+<!-- Plugins -->
+
+<gazebo>
+  <plugin filename="libgazebo_ros_control.so" name="control"/>
+</gazebo>
+
+<gazebo>
+  <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+    <commandTopic>cmd_vel</commandTopic>
+    <odometryTopic>odom</odometryTopic>
+    <odometryFrame>odom</odometryFrame>
+    <odometryRate>20.0</odometryRate>
+    <robotBaseFrame>base_footprint</robotBaseFrame>
+  </plugin>
+</gazebo>
+
+<gazebo reference="lidar_1">
+    <sensor type="ray" name="front_lidar">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>False</visualize>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14</min_angle>
+            <max_angle>3.14</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>12.0</max>
+          <resolution>0.05</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>scan</topicName>
+        <frameName>lidar_1</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+<gazebo reference="base_link">
+  <material>${base_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="lb_wheel_1">
+  <material>${wheel_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="lf_wheel_1">
+  <material>${wheel_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="rf_wheel_1">
+  <material>${wheel_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="rb_wheel_1">
+  <material>${wheel_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="lidar_1">
+  <material>${lidar_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="nozzle_1">
+  <material>${nozzle_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>false</selfCollide>
+</gazebo>
+
+<gazebo reference="arm_vslot_1">
+  <material>${arm_vslot_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="back_cover_1">
+  <material>${back_cover_color}</material>
+  <mu1>1</mu1>
+  <mu2>1</mu2>
+  <kp>100000000</kp>
+  <kd>.5</kd>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="trash_tray_1">
+  <material>${trash_tray_color}</material>
+  <mu1>1</mu1>
+  <mu2>1</mu2>
+  <kp>.01</kp>
+  <kd>1000000</kd>
+  <selfCollide>true</selfCollide>
+  <gravity>false</gravity>
+</gazebo>
+
+<gazebo reference="sponge_tray_1">
+<material>${sponge_tray_color}</material>
+  <mu1>0</mu1>
+  <mu2>0</mu2>
+  <selfCollide>true</selfCollide>
+  <gravity>false</gravity>
+</gazebo>
+
+<!-- <gazebo reference="sponge">
+  <gravity>0</gravity>
+</gazebo> -->
+
+<gazebo reference="mop_tray">
+  <mu1>0</mu1>
+  <mu2>0</mu2>
+  <selfCollide>false</selfCollide>
+  <gravity>false</gravity>
+</gazebo>
+
+</robot>

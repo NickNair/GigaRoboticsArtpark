@@ -1,0 +1,388 @@
+<?xml version="1.0" ?>
+<robot name="apbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find apbot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find apbot_description)/urdf/apbot.trans" />
+<xacro:include filename="$(find apbot_description)/urdf/apbot.gazebo" />
+
+<!-- Arm -->
+<xacro:include filename="$(find arm_description)/urdf/arm.xacro" />
+
+<!-- Arm's joint to base -->
+<joint name="apbot_joint" type="prismatic">
+  <parent link="base_link" />
+  <child link = "arm_base_link" />
+  <origin xyz="0 -0.005 .69" rpy="0.0 0.0 0" />  
+  <axis xyz="0 0 1" />
+  <limit effort="30" velocity="1.0" lower="0" upper=".7" />
+</joint>
+
+<!-- root link, on the ground just below the model origin -->
+<link name="base_footprint">
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <box size="0.001 0.001 0.001" />
+    </geometry>
+  </visual>
+</link>
+
+<!-- Joint for planar move -->
+<joint name="base_link_joint" type="fixed">
+  <origin xyz="0.0 0 0" rpy="0 0 ${pi/2}" />
+  <parent link="base_footprint"/>
+  <child link="base_link" />
+</joint>
+
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.184204407494283e-05 0.015197941868442526 0.1837926291684447"/>
+    <mass value="1000"/>
+    <inertia ixx=".366" ixy="-0.000165" ixz="7.3e-05" iyy=".4" iyz="-0.042" izz=".353"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lb_wheel_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.024999999999999967 -1.3877787807814457e-17 3.469446951953614e-18"/>
+    <mass value=".5"/>
+    <inertia ixx="0.003843" ixy="0.0" ixz="0.0" iyy="0.002561" iyz="0.0" izz="0.002561"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.211 -0.12 -0.02"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/lb_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 ${pi/2} 0" xyz="-0.015 0 0"/>
+    <geometry>
+      <cylinder radius=".05" length=".035" />
+    </geometry>
+  </collision>
+</link>
+
+<link name="lf_wheel_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.025000000000000022 1.3877787807814457e-17 3.469446951953614e-18"/>
+    <mass value=".5"/>
+    <inertia ixx="0.003843" ixy="0.0" ixz="-0.0" iyy="0.002561" iyz="0.0" izz="0.002561"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.211 0.12 -0.02"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/lf_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 ${pi/2} 0" xyz="-0.015 0 0"/>
+    <geometry>
+      <cylinder radius=".05" length=".035" />
+    </geometry>
+  </collision>
+</link>
+
+<link name="rf_wheel_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.025000000000000022 -2.7755575615628914e-17 3.469446951953614e-18"/>
+    <mass value=".5"/>
+    <inertia ixx="0.003843" ixy="0.0" ixz="0.0" iyy="0.002561" iyz="0.0" izz="0.002561"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.211 0.12 -0.02"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/rf_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 ${pi/2} 0" xyz="0.015 0 0"/>
+    <geometry>
+      <cylinder radius=".05" length=".035" />
+    </geometry>
+  </collision>
+</link>
+
+<link name="rb_wheel_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.02500000000000005 2.7755575615628914e-17 3.469446951953614e-18"/>
+    <mass value=".5"/>
+    <inertia ixx="0.003843" ixy="0.0" ixz="-0.0" iyy="0.002561" iyz="-0.0" izz="0.002561"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.211 -0.12 -0.02"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/rb_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 ${pi/2} 0" xyz="0.015 0 0"/>
+    <geometry>
+      <cylinder radius=".05" length=".035" />
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-7.237528875152536e-18 0.0 -0.010000000000000064"/>
+    <mass value=".2"/>
+    <inertia ixx="0.000812" ixy="-0.0" ixz="0.0" iyy="0.000812" iyz="0.0" izz="0.001541"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 0.168 -0.3334"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <!-- <collision>
+    <origin rpy="0 0 0" xyz="-0.0 0.168 -0.3334"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision> -->
+</link>
+
+<link name="nozzle_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0009875805313844088 -0.0014508386042405563 -0.004646201103054193"/>
+    <mass value="0.001831004123745"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.001 0.21 -0.2554"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/nozzle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <!-- <collision>
+    <origin rpy="0 0 0" xyz="-0.001 0.21 -0.2554"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/nozzle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision> -->
+</link>
+
+<link name="arm_vslot_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.0911857770663358e-16 2.1929696272295866e-16 0.4158000000000001"/>
+    <mass value=".8"/>
+    <inertia ixx="0.209761" ixy="0.0" ixz="-0.0" iyy="0.211806" iyz="-0.0" izz="0.002345"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 -0.0 -0.3454"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/arm_vslot_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 -0.0 0.42"/>
+    <geometry>
+      <box size=".09 .025 .83" />
+    </geometry>
+  </collision>
+</link>
+
+<link name="back_cover_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.049670863056735536 0.0 0.2547007082541222"/>
+    <mass value="11.658809779300011"/>
+    <inertia ixx="0.026842" ixy="0.0" ixz="-0.000185" iyy="0.023759" iyz="-0.0" izz="0.030884"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 -0.14 -0.3454"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/back_cover.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 -0.14 -0.3454"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/back_cover.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="trash_tray_1">
+  <inertial>
+    <origin rpy="0 0 ${3*pi/2}" xyz="-0.142 .103 .45"/>
+    <mass value="0.01"/>
+    <inertia ixx="0.209761" ixy="0.0" ixz="-0.0" iyy="0.211806" iyz="-0.0" izz="0.002345"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 ${3*pi/2}" xyz="-0.142 .103 .45"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/trash_tray.dae" scale="1 1 1"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 ${3*pi/2}" xyz="-.142 .103 .45"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/trash_tray.dae" scale="1 1 1"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="sponge_tray_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <mass value="0.01"/>
+    <inertia ixx="0.209761" ixy="0.0" ixz="-0.0" iyy="0.211806" iyz="-0.0" izz="0.002345"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/sponge_tray.stl" scale=".001 .001 .001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/sponge_tray.stl" scale=".001 .001 .001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mop_tray">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <mass value=".1"/>
+    <inertia ixx="0.001" ixy="0.0" ixz="-0.0" iyy="0.001" iyz="-0.0" izz="01"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <box size=".27 .15 .01"/>
+    </geometry>
+  </visual>
+  <!-- <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <box size=".27 .15 .01"/>
+    </geometry>
+  </collision> -->
+</link>
+
+<link name="sponge">
+  <inertial>
+    <origin rpy="${pi/2} 0 ${pi/2}" xyz="-.147 -.141 .7"/>
+    <mass value=".001"/>
+    <inertia ixx="0.001" ixy="0.0" ixz="-0.0" iyy="0.001" iyz="-0.0" izz="01"/>
+  </inertial>
+  <visual>
+    <origin rpy="${pi/2} 0 ${pi/2}" xyz="-.147 -.141 .7"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/sponge/meshes/bin.dae" scale="1 1 1"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin rpy="${pi/2} 0 ${pi/2}" xyz="-.147 -.141 .7"/>
+    <geometry>
+      <mesh filename="package://apbot_description/meshes/sponge/meshes/bin.dae" scale="1 1 1"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="lb_wheel_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.211 0.12 0.02"/>
+  <parent link="base_link"/>
+  <child link="lb_wheel_1"/>
+</joint>
+
+<joint name="lf_wheel_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.211 -0.12 0.02"/>
+  <parent link="base_link"/>
+  <child link="lf_wheel_1"/>
+</joint>
+
+<joint name="rf_wheel_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.211 -0.12 0.02"/>
+  <parent link="base_link"/>
+  <child link="rf_wheel_1"/>
+</joint>
+
+<joint name="rb_wheel_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.211 0.12 0.02"/>
+  <parent link="base_link"/>
+  <child link="rb_wheel_1"/>
+</joint>
+
+<joint name="lidar_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 -0.168 0.3334"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
+</joint>
+
+<joint name="nozzle_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.001 -0.21 0.2554"/>
+  <parent link="base_link"/>
+  <child link="nozzle_1"/>
+</joint>
+
+<joint name="arm_vslot_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.3454"/>
+  <parent link="base_link"/>
+  <child link="arm_vslot_1"/>
+</joint>
+
+<joint name="back_cover_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.14 0.3454"/>
+  <parent link="base_link"/>
+  <child link="back_cover_1"/>
+</joint>
+
+<joint name="trash_tray_joint" type="floating">
+  <origin rpy="0 0 ${-pi/2}" xyz="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="trash_tray_1"/>
+</joint>
+
+<joint name="sponge_tray_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0"/>
+  <parent link="base_link"/>
+  <child link="sponge_tray_1"/>
+</joint>
+
+<joint name="sponge_joint" type="floating">
+  <origin rpy="0 0 ${-pi/2}" xyz="-.005 -0.01 -.05"/>
+  <parent link="sponge_tray_1"/>
+  <child link="sponge"/>
+</joint>
+
+<!-- <joint name="trash_tray_joint" type="fixed">
+  <origin rpy="0 0 ${-pi/2}" xyz=".05 0.4 0"/>
+  <parent link="base_link"/>
+  <child link="trash_tray_1"/>
+</joint> -->
+
+<joint name="mop_tray_joint" type="prismatic">
+  <origin rpy="0 0 0" xyz="0 -0.15 -.005"/>
+  <parent link="base_link"/>
+  <child link="mop_tray"/>
+  <axis xyz="0 0 1" />
+  <limit effort="30" velocity=".5" lower="-.02" upper="0" />
+</joint>
+
+</robot>

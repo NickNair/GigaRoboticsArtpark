@@ -1,0 +1,114 @@
+<?xml version="1.0" ?>
+<robot name="apbot_gripper" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:macro name="mimic_joint_plugin_gazebo" params="name_prefix parent_joint mimic_joint has_pid:=false multiplier:=1.0 offset:=0 sensitiveness:=0.0 max_effort:=1.0 robot_namespace:=''">
+    <gazebo>
+      <plugin name="${name_prefix}mimic_joint_plugin" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
+        <joint>${parent_joint}</joint>
+        <mimicJoint>${mimic_joint}</mimicJoint>
+        <xacro:if value="${has_pid}">                     <!-- if set to true, PID parameters from "/gazebo_ros_control/pid_gains/${mimic_joint}" are loaded -->
+          <hasPID />
+        </xacro:if>
+        <multiplier>${multiplier}</multiplier>
+        <offset>${offset}</offset>
+        <sensitiveness>${sensitiveness}</sensitiveness>   <!-- if absolute difference between setpoint and process value is below this threshold, do nothing; 0.0 = disable [rad] -->
+        <maxEffort>${max_effort}</maxEffort>              <!-- only taken into account if has_pid:=true [Nm] -->
+        <xacro:unless value="${robot_namespace == ''}">
+          <robotNamespace>${robot_namespace}</robotNamespace>
+        </xacro:unless>
+      </plugin>
+    </gazebo>
+  </xacro:macro>
+
+<transmission name="knuckle_joint_left_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="knuckle_joint_left">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="knuckle_joint_left_actr">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<xacro:mimic_joint_plugin_gazebo name_prefix="knuckle_right_mimic"
+  parent_joint="knuckle_joint_left" mimic_joint="knuckle_joint_right" multiplier="-1.0"/>
+<xacro:mimic_joint_plugin_gazebo name_prefix="right_finger_mimic"
+  parent_joint="knuckle_joint_left" mimic_joint="finger_joint_right" multiplier="-1.0" />
+<xacro:mimic_joint_plugin_gazebo name_prefix="left_finger_mimic"
+  parent_joint="knuckle_joint_left" mimic_joint="finger_joint_left" multiplier="1.0" />
+
+  <!-- <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="knuckle_right_mimic">
+                <joint>knuckle_joint_left</joint>
+                <mimicJoint>knuckle_joint_right</mimicJoint>
+                <multiplier>-1.0</multiplier>
+            </plugin>
+
+  <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="right_finger_mimic">
+                <joint>knuckle_joint_left</joint>
+                <mimicJoint>finger_joint_right</mimicJoint>
+                <multiplier>-1.0</multiplier>
+            </plugin>
+
+  <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="left_finger_mimic">
+                <joint>knuckle_joint_left</joint>
+                <mimicJoint>finger_joint_left</mimicJoint>
+                <multiplier>1.0</multiplier>
+            </plugin> -->
+
+<!-- <transmission name="finger_joint_left_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="finger_joint_left">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="finger_joint_left">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission> -->
+
+<!-- <transmission name="finger_joint_right_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="finger_joint_right">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="finger_joint_right_actr">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission> -->
+
+<!-- <transmission name="knuckle_joint_right_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="knuckle_joint_right">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="knuckle_joint_right_actr">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission> -->
+<!-- <gazebo>
+  <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="right_knuckle_mimic">
+      <joint>knuckle_joint_right</joint>
+      <mimicJoint>knuckle_joint_left</mimicJoint>
+      <multiplier>-1.0</multiplier>
+      <offset>0.0</offset>
+  </plugin>
+
+  <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="right_finger_mimic">
+      <joint>finger_joint_right</joint>
+      <mimicJoint>knuckle_joint_left</mimicJoint>
+      <multiplier>-1.0</multiplier>
+      <offset>0.0</offset>
+  </plugin>
+
+  <plugin filename="libroboticsgroup_gazebo_mimic_joint_plugin.so" name="left_finger_mimic">
+      <joint>finger_joint_left</joint>
+      <mimicJoint>knuckle_joint_left</mimicJoint>
+      <multiplier>1.0</multiplier>
+      <offset>0.0</offset>
+  </plugin>
+</gazebo> -->
+
+</robot>
