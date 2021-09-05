@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
         cans.remove(can)
 
-        model_path = "artpark_workspace/src/GigaRoboticsArtpark/artpark2021_world/models/" + can
+        model_path = "/artpark_workspace/src/GigaRoboticsArtpark_artpark/artpark2021_world/models/" + can
         model_xml = ''
 
         with open (model_path + '/model.sdf', 'r') as xml_file:
